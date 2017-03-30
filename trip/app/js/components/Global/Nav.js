@@ -1,19 +1,27 @@
-import React, { Component } from 'react';
-import NavBarItem from './navbarItem.js';
+//import React, { Component } from 'react';
+var NavBarItem =require('./navbarItem.js');
+var React=require('react');
 
-export default class NavBar extends Component{
-  console.log("Hey");
-  function generateItem(){
-     return (<NavBarItem text={this.props.text} url={this.props.url} submenu={this.props.submenu} />
+var NavBar=React.createClass({
+
+ /*generateItem:function(){
+     return (
      );
-   }
-  render() {
+   },*/
+  render:function() {
 
-    var items = this.props.items.map(this.generateItem());
-    return (
+    var items = this.props.items.map(function(item){
+      return (
+        <NavBarItem text={item.text} url={item.url} submenu={item.submenu} />
+      );
+    });
+    return(
       <ul className="menu">
       {items}
       </ul>
     );
+
+
   }
-}
+});
+module.exports=NavBar;
